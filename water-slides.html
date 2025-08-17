@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Slides - My Jump House Rentals | Elk Grove & Sacramento</title>
+    <meta name="description" content="Rent exciting water slides from My Jump House in Elk Grove and Sacramento. Perfect for summer parties and hot weather fun. Professional setup included.">
+    
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Root Variables */
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #4ecdc4;
+            --accent-color: #45b7d1;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2);
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --water-gradient: linear-gradient(135deg, #45b7d1, #4ecdc4);
+            --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🏰";
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 1px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--water-gradient);
+            color: var(--white);
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,50 Q30,40 40,50 T60,50" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/><path d="M10,70 Q20,60 30,70 T50,70" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/><path d="M70,30 Q80,20 90,30" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/></svg>') repeat;
+            animation: wave 15s infinite linear;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0px); }
+            100% { transform: translateX(-100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .breadcrumb {
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .breadcrumb a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--water-gradient);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image {
+            height: 250px;
+            background: var(--water-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .product-content {
+            padding: 2rem;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .product-features li::before {
+            content: "💧";
+            position: absolute;
+            left: 0;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .product-size {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .contact-btn {
+            background: var(--water-gradient);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--bg-light);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .info-card h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Safety Notice */
+        .safety-notice {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .safety-notice h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+        }
+
+        .safety-notice p {
+            color: #856404;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">My Jump House</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="bounce-houses.html">Bounce Houses</a></li>
+                <li><a href="water-slides.html" class="active">Water Slides</a></li>
+                <li><a href="tables-chairs.html">Tables & Chairs</a></li>
+                <li><a href="concessions.html">Concessions</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Water Slides</h1>
+                <p class="tagline">Beat the heat with our exciting water slides - perfect for summer fun!</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> / Water Slides
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Summer Water Slide Collection</h2>
+            
+            <div class="safety-notice">
+                <h3>🌊 Water Slide Safety & Requirements</h3>
+                <p>Water source and hose connection required. Adult supervision mandatory. Age and weight restrictions apply. We provide setup instructions and safety guidelines with every rental.</p>
+            </div>
+
+            <div class="products-grid">
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        🌊🛝
+                        <div class="product-badge">Most Popular</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Giant Tropical Water Slide</h3>
+                        <p class="product-description">Our biggest and most exciting water slide! Features tropical palm tree decorations and a refreshing splash pool at the bottom.</p>
+                        <ul class="product-features">
+                            <li>18-foot high slide</li>
+                            <li>Splash pool landing</li>
+                            <li>Tropical theme design</li>
+                            <li>Slip-resistant climbing wall</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">32' x 12' x 18'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🏄‍♂️
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Surf Wave Water Slide</h3>
+                        <p class="product-description">Catch the wave! This surf-themed water slide brings the beach to your backyard with ocean blue colors and wave designs.</p>
+                        <ul class="product-features">
+                            <li>15-foot slide height</li>
+                            <li>Ocean wave graphics</li>
+                            <li>Double-wide slide surface</li>
+                            <li>Safety rails included</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">28' x 10' x 15'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🌈💦
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Rainbow Splash Slide</h3>
+                        <p class="product-description">Slide through the rainbow! Colorful and fun water slide perfect for younger children and smaller backyards.</p>
+                        <ul class="product-features">
+                            <li>12-foot gentle slope</li>
+                            <li>Rainbow arch sprinklers</li>
+                            <li>Kid-friendly height</li>
+                            <li>Easy access steps</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">22' x 8' x 12'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🏴‍☠️🌊
+                        <div class="product-badge">Adventure</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Pirate Ship Water Adventure</h3>
+                        <p class="product-description">Ahoy matey! This pirate-themed water slide features a ship design with mast, sails, and a thrilling plank slide!</p>
+                        <ul class="product-features">
+                            <li>Pirate ship design</li>
+                            <li>16-foot slide deck</li>
+                            <li>Water cannons included</li>
+                            <li>Jolly Roger flag</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">30' x 12' x 16'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🏰💦
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Princess Castle Water Slide</h3>
+                        <p class="product-description">Royal fun meets water adventure! This castle-themed water slide is perfect for princess parties with elegant towers and gentle slope.</p>
+                        <ul class="product-features">
+                            <li>Castle turret design</li>
+                            <li>14-foot princess slide</li>
+                            <li>Pink and purple colors</li>
+                            <li>Royal banner decorations</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">26' x 10' x 14'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🏁💦
+                        <div class="product-badge">Combo</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Dual Lane Racing Water Slides</h3>
+                        <p class="product-description">Race your friends down side-by-side slides! This competitive water slide features two lanes for double the excitement.</p>
+                        <ul class="product-features">
+                            <li>Two racing lanes</li>
+                            <li>15-foot parallel slides</li>
+                            <li>Racing flag decorations</li>
+                            <li>Finish line splash zone</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">35' x 15' x 15'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title">Water Slide Safety & Setup</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-icon">🚰</span>
+                    <h3>Water Connection Required</h3>
+                    <p>You'll need access to a garden hose and water spigot. We provide all connection fittings and ensure proper water flow for maximum fun and safety.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">👨‍👩‍👧‍👦</span>
+                    <h3>Adult Supervision</h3>
+                    <p>Adult supervision is required at all times. We provide safety guidelines and age/weight restrictions to ensure everyone has a safe and enjoyable experience.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">🌡️</span>
+                    <h3>Perfect for Hot Weather</h3>
+                    <p>Water slides are ideal for temperatures above 75°F. Best enjoyed during Sacramento's warm summer months from May through September.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">📏</span>
+                    <h3>Space Requirements</h3>
+                    <p>We'll help you determine if your yard has adequate space. Most water slides need level ground and clearance from trees, fences, and overhead obstacles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 My Jump House. All rights reserved. | Serving Elk Grove & Sacramento since 2005</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61566546707760" target="_blank" title="Facebook">📘</a>
+                    <a href="https://www.instagram.com/myjumphouse" target="_blank" title="Instagram">📷</a>
+                    <a href="mailto:myjumphouserentals@yahoo.com" title="Email">✉️</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinksContainer = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

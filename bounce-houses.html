@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounce Houses - My Jump House Rentals | Elk Grove & Sacramento</title>
+    <meta name="description" content="Rent bounce houses and bounce castles from My Jump House in Elk Grove and Sacramento. Disney-themed, combo units, and more for your party or event.">
+    
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Root Variables */
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #4ecdc4;
+            --accent-color: #45b7d1;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2);
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🏰";
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 1px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="80" r="2.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="90" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .breadcrumb {
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .breadcrumb a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image {
+            height: 250px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .product-content {
+            padding: 2rem;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .product-features li::before {
+            content: "✓";
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .product-size {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .contact-btn {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--bg-light);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">My Jump House</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="bounce-houses.html" class="active">Bounce Houses</a></li>
+                <li><a href="water-slides.html">Water Slides</a></li>
+                <li><a href="tables-chairs.html">Tables & Chairs</a></li>
+                <li><a href="concessions.html">Concessions</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bounce Houses</h1>
+                <p class="tagline">Safe, clean, and colorful bounce houses for unforgettable parties</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> / Bounce Houses
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Our Bounce House Collection</h2>
+            <div class="products-grid">
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        🏰
+                        <div class="product-badge">Popular</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Princess Castle Bounce House</h3>
+                        <p class="product-description">A magical pink and purple castle that makes every little princess feel special. Features turrets, flags, and royal decorations.</p>
+                        <ul class="product-features">
+                            <li>Disney Princess theme</li>
+                            <li>Safety mesh walls</li>
+                            <li>Easy entrance/exit</li>
+                            <li>Holds 6-8 children</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">15' x 15' x 15'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🦸‍♂️
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Superhero Adventure Bounce</h3>
+                        <p class="product-description">Action-packed bounce house featuring favorite superheroes. Perfect for young heroes who want to jump, bounce, and save the day!</p>
+                        <ul class="product-features">
+                            <li>Marvel & DC characters</li>
+                            <li>Colorful superhero graphics</li>
+                            <li>Reinforced construction</li>
+                            <li>Holds 8-10 children</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">18' x 15' x 15'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🌈
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Rainbow Fun Bouncer</h3>
+                        <p class="product-description">Bright and colorful rainbow-themed bounce house that brings joy and excitement to any celebration. Gender-neutral and perfect for all ages.</p>
+                        <ul class="product-features">
+                            <li>Vibrant rainbow colors</li>
+                            <li>Large bouncing area</li>
+                            <li>Durable vinyl construction</li>
+                            <li>Holds 8-12 children</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">20' x 15' x 15'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🏰🛝
+                        <div class="product-badge">Combo</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Castle Combo with Slide</h3>
+                        <p class="product-description">The best of both worlds! This combo unit features a spacious bounce area plus an exciting slide for double the fun.</p>
+                        <ul class="product-features">
+                            <li>Bounce area + slide</li>
+                            <li>Medieval castle theme</li>
+                            <li>Basketball hoop included</li>
+                            <li>Holds 10-15 children</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">25' x 15' x 18'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🎪
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Carnival Theme Bouncer</h3>
+                        <p class="product-description">Step right up to this festive carnival-themed bounce house! Complete with circus colors and decorations for a truly memorable party.</p>
+                        <ul class="product-features">
+                            <li>Circus carnival design</li>
+                            <li>Bright festive colors</li>
+                            <li>Extra safety features</li>
+                            <li>Holds 6-10 children</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">16' x 16' x 15'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🐯
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Jungle Safari Adventure</h3>
+                        <p class="product-description">Take a wild adventure in this jungle-themed bounce house featuring friendly safari animals and tropical decorations.</p>
+                        <ul class="product-features">
+                            <li>Safari animal graphics</li>
+                            <li>Jungle adventure theme</li>
+                            <li>Educational and fun</li>
+                            <li>Holds 8-12 children</li>
+                        </ul>
+                        <div class="product-footer">
+                            <span class="product-size">18' x 18' x 16'</span>
+                            <a href="tel:916-236-7994" class="contact-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Bounce Houses?</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-icon">🧼</span>
+                    <h3>Always Clean & Sanitized</h3>
+                    <p>Every bounce house is thoroughly cleaned and sanitized after each use. We use professional-grade cleaning products to ensure a safe, hygienic experience for your guests.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">🛡️</span>
+                    <h3>Safety Inspected</h3>
+                    <p>All our equipment undergoes regular safety inspections. We check for wear, proper inflation, and secure anchoring to guarantee a safe bouncing experience.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">🚚</span>
+                    <h3>Professional Setup</h3>
+                    <p>Our experienced team handles delivery, setup, and pickup. We ensure proper installation and provide safety instructions for worry-free fun.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">📞</span>
+                    <h3>Easy Booking</h3>
+                    <p>Simple phone or text booking with flexible scheduling. We work around your event timeline to ensure everything is perfect for your special day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 My Jump House. All rights reserved. | Serving Elk Grove & Sacramento since 2005</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61566546707760" target="_blank" title="Facebook">📘</a>
+                    <a href="https://www.instagram.com/myjumphouse" target="_blank" title="Instagram">📷</a>
+                    <a href="mailto:myjumphouserentals@yahoo.com" title="Email">✉️</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinksContainer = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
